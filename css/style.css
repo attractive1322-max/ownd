@@ -1,0 +1,1451 @@
+@charset "utf-8";
+/* webfont */
+/* font-family: 'Pretendard'; */
+/*  font-family: 'Lemon/Milk', sans-serif; 'Lemon/Milk light', sans-serif; */
+/* font-family: 'Tropical Avenue Personal Use On', sans-serif; */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    /* Prevent font scaling in landscape */
+
+    -webkit-text-size-adjust: none;
+    /*Chrome, Safari, newer versions of Opera*/
+
+    -moz-text-size-adjust: none;
+    /*Firefox*/
+
+    -ms-text-size-adjust: none;
+    /*Ie*/
+
+    -o-text-size-adjust: none;
+    /*old versions of Opera*/
+
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Pretendard';
+    font-size: 15px;
+    line-height: 1.5;
+    color: #272727;
+}
+
+#wrap {
+    min-width: 1360px;
+}
+
+/* ------------------header------------------ */
+
+/* 1. 헤더 래퍼 (배경색 및 전체 너비) */
+#header_wrap {
+    position: fixed;
+    top: -70px;
+    /* 처음에 숨겨둠 (높이만큼 위로) */
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(237, 233, 244, 0.6);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    transition: top 0.4s ease-in-out;
+    /* 나타날 때 부드러운 효과 */
+}
+
+/* 스크롤 시 추가될 클래스 */
+#header_wrap.visible {
+    top: 0;
+    /* 화면 상단에 고정 */
+}
+
+/* 2. 헤더 컨텐츠 (가운데 정렬 1320px) */
+.header {
+    width: 1320px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* 3. GNB 메뉴 리스트 */
+.gnb {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.gnb li {
+    flex: 1;
+    text-align: center;
+}
+
+.gnb li a {
+    font-family: 'Lemon/Milk light', sans-serif;
+    text-decoration: none;
+    color: #2f2f2f;
+    font-size: 14px;
+    font-weight: 200;
+    letter-spacing: 3px;
+    transition: color 0.3s;
+}
+
+/* 로고 스타일 */
+.header_logo {
+    flex: 1.5 !important;
+    /* 로고 영역을 약간 더 넓게 */
+}
+
+.header_logo img {
+    display: block;
+    margin: 0 auto;
+    height: 45px;
+    /* 로고 높이 조절 */
+    width: auto;
+}
+
+
+/* 4. 메인 히어로 (처음 보이는 100vh 영역) */
+.main-hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(237, 233, 244, 0.8);
+    /* 연보라 배경 */
+    color: #353535;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* 3초 뒤 높이가 사라짐 */
+.main-hero.shrink {
+    height: 0;
+    opacity: 0;
+}
+
+/* 메인 히어로 로고 이미지 및 반짝이는 효과 */
+.hero-logo-box {
+    position: relative;
+    width: 1278px;
+    height: 303px;
+    max-width: 90%;
+    /* 모바일 대응용 */
+    height: auto;
+    overflow: hidden;
+    /* 반짝이는 광원이 박스 밖으로 나가지 않게 함 */
+}
+
+.hero-logo-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 반짝이는 효과 (Shimmer Effect) */
+.hero-logo-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    animation: shine 1s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.main-hero p {
+    font-family: 'Tropical Avenue Personal Use On', sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    padding-top: 50px;
+    letter-spacing: 30px;
+    opacity: 0.8;
+
+}
+
+/* -----------------visual----------------- */
+
+#visual {
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+#visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지가 영역을 꽉 채우도록 설정 */
+    display: block;
+}
+
+/* --------------플로우 섹션-------------- */
+.marquee-container {
+    height: 90px;
+    background-color: #EDE9F4;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-item {
+
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: rgb(138, 138, 138, 0.7);
+    padding: 0 120px;
+    font-weight: 400;
+    font-family: 'Lemon/Milk light', sans-serif;
+}
+
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* 플로우 섹션2  */
+
+.marquee-container2 {
+    height: 90px;
+    background-color: #8a8a8a;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-item2 {
+
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: rgba(237, 233, 244, 0.7);
+    padding: 0 120px;
+    font-weight: 400;
+    font-family: 'Lemon/Milk light', sans-serif;
+}
+
+
+
+
+
+/* 스크롤 시 나타날 요소들의 초기 상태 */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    /* 60px 아래에서 대기 */
+    transition: opacity 1.2s cubic-bezier(0.5, 0, 0, 1), transform 1.2s cubic-bezier(0.5, 0, 0, 1);
+    will-change: opacity, transform;
+}
+
+/* 화면에 보일 때의 상태 */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* --------------about-------------- */
+
+#about {
+    height: 900px;
+    background: rgba(245, 241, 235, 0.7) url(../images/about_lesscover.svg) no-repeat right 290px bottom 85px;
+
+}
+
+.about_wrap {
+    width: 1320px;
+    margin: 0 auto;
+    padding: 100px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    z-index: 2;
+    align-items: center;
+
+
+}
+
+/* 왼쪽 텍스트 영역 */
+.text_content {
+    color: #272727;
+}
+
+.about_title {
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-size: 12px;
+    font-weight: 100;
+    margin-bottom: 14px;
+    display: block;
+    letter-spacing: 3px;
+}
+
+.about_slogan {
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-size: 38px;
+    font-weight: 100;
+    margin-bottom: 44px;
+    letter-spacing: 7px;
+    line-height: 1.2;
+}
+
+.slogan2 {
+    font-weight: bold;
+}
+
+.description {
+    font-size: 22px;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+.description2 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.brand-logo {
+    font-family: 'Tropical Avenue Personal Use On', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/*  오른쪽 이미지 영역 */
+.img_content img {
+    width: 726px;
+    height: 542px;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.05);
+    position: relative;
+
+}
+
+.img_content img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    border-radius: 20px;
+}
+
+/* product */
+#product {
+    height: 900px;
+    background-color: rgba(184, 179, 201, 0.17);
+    padding-top: 25px;
+    box-sizing: border-box;
+}
+
+.objects_wrap {
+    width: 1320px;
+    margin: 0 auto;
+}
+
+.objects-header {
+    width: 1200px;
+    max-width: 90%;
+    display: flex;
+    align-items: baseline;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.objects-header h2 {
+    font-family: 'Tropical Avenue Personal Use On', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.objects-header span {
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    color: #3e3e3e;
+    text-transform: uppercase;
+}
+
+
+/* swiper */
+.swiper {
+    width: 100%;
+    height: 850px;
+}
+
+.slide_wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    box-sizing: border-box;
+}
+
+.slide_img_wrap {
+    width: 800px;
+    height: 900px;
+}
+
+
+.s_title {
+    font-family: 'Lemon/Milk light', sans-serif;
+    letter-spacing: 2px;
+    font-size: 20px;
+
+}
+
+.sub-tag {
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-bottom: 60px;
+    display: block;
+}
+
+.info {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+
+/* slide3 */
+.slide3_wrap {
+    height: 850px;
+    box-sizing: border-box;
+}
+
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.list_img {
+    width: 400px;
+    height: 400px;
+}
+
+
+.list_img img {
+    display: block;
+    object-fit: cover;
+}
+
+.text_box {
+    width: 200px;
+    padding: 160px 20px 0 20px;
+    border: 1px solid #EDE9F4;
+    background-color: rgba(237, 233, 244, 0.5);
+    text-align: center;
+    align-items: center;
+
+}
+
+.list_text_title {
+    font-family: 'Lemon/Milk light', sans-serif;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.list_text {
+    font-size: 13px;
+    text-align: center;
+}
+
+
+/* --- 이미지 호버 효과 --- */
+.hover-img-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.hover-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.hover-img-container .img-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.hover-img-container:hover .img-front {
+    opacity: 0;
+    transform: scale(1.03);
+}
+
+.hover-img-container:hover .img-back {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+
+/* --- ★ 네비게이션 버튼 커스텀 스타일 (강력 초기화 버전) --- */
+
+/* 1. 기본 폰트 아이콘 강제 제거 */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none !important;
+    content: "" !important;
+    /* 강제로 내용 비우기 */
+}
+
+/* 2. 버튼 기본 스타일 리셋 및 이미지 적용 */
+.swiper-button-next,
+.swiper-button-prev {
+    width: 40px !important;
+    /* 이미지 크기에 맞춰 조절 */
+    height: 40px !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    color: transparent !important;
+    /* 기본 파란색 텍스트 투명화 */
+    margin-top: -30px;
+    /* (height / 2) */
+    transition: opacity 0.3s ease;
+}
+
+/* 3. 각 버튼에 이미지 경로 할당 */
+.swiper-button-next {
+    background-image: url(/images/product/right.png) !important;
+    right: 0;
+}
+
+.swiper-button-prev {
+    background-image: url(/images/product/left.png) !important;
+    left: 0;
+}
+
+/* 호버 효과 */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 0.6;
+}
+
+/* 클릭 시 약간 작아지는 효과 (선택) */
+.swiper-button-next:active,
+.swiper-button-prev:active {
+    transform: scale(0.95);
+}
+
+
+
+/* tutorials */
+#tutorials {
+    width: 1320px;
+    height: 900px;
+    margin: 0 auto;
+    padding-top: 100px;
+    box-sizing: border-box;
+}
+
+.objects-header2 {
+    width: 1200px;
+    max-width: 90%;
+    display: flex;
+    align-items: baseline;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.objects-header2 h2 {
+    font-family: 'Tropical Avenue Personal Use On', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.objects-header2 span {
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    color: #3e3e3e;
+    text-transform: uppercase;
+}
+
+
+.tutorials_wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* 영상박스 */
+.tutorials_box {
+    width: 301px;
+    height: 650px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-weight: 100;
+    letter-spacing: 1px;
+    border: 1px solid #e2e2e2;
+    overflow: hidden;
+
+    /* 애니메이션이 부드럽게 일어나도록 설정 */
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.video_wrap {
+    width: 100%;
+    height: calc(650px - 129px);
+    overflow: hidden;
+}
+
+.hover_video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+/*상품 정보 감싸는 박스 */
+.product_box_wrap {
+    width: 298px;
+    height: 129px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.product_box {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.video_title {
+    font-size: 13px;
+}
+
+.video_p {
+    font-size: 11px;
+    color: #8a8a8a;
+}
+
+
+.product_box img {
+    display: block;
+    width: 56px;
+    height: 68px;
+    object-fit: cover;
+}
+
+.tutorials_btn {
+    width: 280px;
+    height: 32px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 0;
+    color: #fff;
+    border-radius: 10px;
+    background: linear-gradient(to left,
+            rgb(245, 241, 235) 0%,
+            /* #F5F1EB, 100% */
+            rgb(216, 165, 165) 46%,
+            /* #D8A5A5, 100% */
+            rgb(237, 233, 244) 97%
+            /* #EDE9F4, 100% */
+        );
+}
+
+
+
+/* 🌟 [핵심] 호버했을 때 전체 박스에 들어갈 반짝이는 테두리 효과 */
+.tutorials_box.active {
+    border-color: #EDE9F4;
+    /* 푸터에 썼던 퍼플 톤과 맞춤 */
+
+    /* 은은하게 빛나는 네온 반짝임 효과 (그림자를 겹쳐서 밝게 만듭니다) */
+    box-shadow:
+        0 0 5px rgba(237, 233, 244, 0.4),
+        /* 안쪽 진한 빛 */
+        0 0 15px rgba(237, 233, 244, 0.6),
+        /* 중간 번지는 빛 */
+        0 0 25px rgba(184, 179, 201, 0.5);
+    /* 가장 외곽의 차분한 빛 */
+}
+
+
+
+/* event */
+#event {
+    /* .evnet_btn의 기준 */
+    position: relative;
+}
+
+#event img {
+    display: block;
+    width: 100%;
+    height: 250px;
+
+}
+
+.event_btn {
+    display: inline-block;
+    font-family: 'Lemon/Milk light', sans-serif;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    background-color: transparent;
+    letter-spacing: 1px;
+    text-align: center;
+
+    /* position 자식요소 */
+    position: absolute;
+    top: 155px;
+    left: 1040px;
+
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.02);
+}
+
+.event_btn:hover {
+    background-color: rgb(255, 255, 255, 0.5);
+    color: #B8B3C9;
+    font-size: 17px;
+
+}
+
+
+/* community */
+#community {
+    background-color: rgb(245, 241, 235, 0.7);
+}
+
+.review {
+    width: 1320px;
+    height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+/* 왼쪽 텍스트 영역 */
+.review-left {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+
+.review_header h2 {
+    font-family: 'Tropical Avenue Personal Use On', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    margin-top: 100px;
+}
+
+.review_header span {
+    font-size: 15px;
+    font-weight: 450;
+    letter-spacing: 1px;
+    color: #3e3e3e;
+    text-transform: uppercase;
+}
+
+
+.review-left .desc {
+    font-size: 15px;
+    line-height: 2;
+    margin-top: 80px;
+    margin-bottom: 90px;
+    font-weight: 300;
+}
+
+.review-left .desc2 {
+    font-size: 20px;
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-weight: 100;
+    letter-spacing: 2px;
+    color: #8a8a8a;
+    margin-bottom: 15px;
+
+
+}
+
+
+
+.review-action-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+}
+
+.share-btn {
+    font-family: 'Lemon/Milk light', sans-serif;
+    position: relative;
+    color: #F5F1EB;
+    /* 호버 전 글씨 #EDE9F4 */
+    font-size: 20px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #272727;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 10px;
+}
+
+.share-btn img {
+    display: block;
+    margin-left: 5px;
+}
+
+/* Shine (Glass Flash) 효과 */
+.share-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    animation: glass-flash 2s infinite;
+}
+
+@keyframes glass-flash {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 150%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.share-btn:hover {
+    background-color: #B8B3C9;
+    color: #fff;
+
+
+}
+
+.glow-symbol {
+    width: 28px;
+    height: auto;
+
+}
+
+
+
+/* 오른쪽 사진 영역 */
+
+/* 오른쪽 후기 슬라이드 영역 */
+.review-right {
+    flex: 1;
+    height: 768px;
+    display: grid;
+    grid-template-columns: repeat(2, 283px);
+    /* 너비 고정 */
+    gap: 15px;
+    overflow: hidden;
+    position: relative;
+    margin-left: 100px;
+    /* 왼쪽 파트와 간격 더 확보 */
+}
+
+
+/* 상하단 페이드 마스크 */
+.review-right::before,
+.review-right::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.review-right::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--review-bg), transparent);
+}
+
+.review-right::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--review-bg), transparent);
+}
+
+.review-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 세로 애니메이션 */
+.review-track {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.track-up {
+    animation: scroll-up 45s linear infinite;
+}
+
+.track-down {
+    animation: scroll-down 45s linear infinite;
+}
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        transform: translateY(-50%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 후기 카드 아이템 및 호버 시 선명해지기 */
+.review-item {
+    width: 283px;
+    height: 405px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.review-item .img-box {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.review-item img {
+    width: 100%;
+    height: 100%;
+    /* 높이 꽉 차게 */
+    object-fit: cover;
+    /* 비율 유지하며 꽉 채움 */
+    display: block;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.review-item:hover img {
+    opacity: 1;
+    /* 호버 시 투명도 1.0 (선명하게) */
+    /* 기존 transform: scale(1.1)은 제거함 */
+}
+
+/* vegan */
+
+#vegan_wrap {
+    /* width: 1920px; */
+    height: 650px;
+    box-sizing: border-box;
+
+    /* 배경 그라디언트 설정 */
+    background: linear-gradient(to bottom,
+            rgba(245, 241, 235, 0.72) 6%,
+            /* #F5F1EB, 72% */
+            rgba(247, 245, 240, 0.6) 30%,
+            /* #F7F5F0, 60% */
+            rgba(255, 255, 255, 0.57) 54%
+            /* #FFFFFF, 57% */
+        );
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.vegan {
+    width: 1320px;
+    margin: 0 auto;
+    padding-top: 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.vegan img {
+
+    display: block;
+    width: 1000px;
+
+}
+
+/* sns */
+#sns_wrap {
+    /* width: 1920px; */
+    height: 900px;
+
+    /* 왼쪽 위(135도 방향)에서 시작하는 그라디언트 */
+    background: linear-gradient(160deg,
+            rgba(245, 241, 235, 1.0) 0%,
+            /* #F5F1EB, 100% */
+            rgba(237, 233, 244, 0.82) 45%,
+            /* #EDE9F4, 82% */
+            rgba(184, 179, 201, 1.0) 97%
+            /* #B8B3C9, 100% */
+        );
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+
+
+}
+
+.sns {
+    width: 1843px;
+    height: 842px;
+    overflow: hidden;
+    /* sns_pic img의 기준점 */
+    position: relative;
+}
+
+/* 사진 공통꾸미기 */
+.sns li {
+    width: 451px;
+    height: 451px;
+    border-radius: 10px;
+    transform: rotate(-14.79deg);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    cursor: pointer;
+
+}
+
+/* sns 사진들 */
+
+.sns li:first-child {
+    background-image: url(/images/instgram/sns_img1.png);
+    top: -155px;
+    left: -118px;
+
+}
+
+.sns li:nth-child(2) {
+    background-image: url(/images/instgram/sns_img2.png);
+    top: 367px;
+    left: 21px;
+}
+
+.sns li:nth-child(3) {
+    background-image: url(/images/instgram/sns_img3.png);
+    top: -19px;
+    left: 503px;
+}
+
+.sns li:nth-child(4) {
+    background-image: url(/images/instgram/sns_img4.png);
+    top: 498px;
+    left: 643px;
+}
+
+.sns li:nth-child(5) {
+    background-image: url(/images/instgram/sns_img5.png);
+    top: -388px;
+    left: 996px;
+}
+
+.sns li:nth-child(6) {
+    background-image: url(/images/instgram/sns_img6.png);
+    top: 138px;
+    left: 1147px;
+}
+
+.sns li:nth-child(7) {
+    background-image: url(/images/instgram/sns_img7.png);
+    top: 649px;
+    left: 1289px;
+
+}
+
+.sns li:nth-child(8) {
+    background-image: url(/images/instgram/sns_img8.png);
+
+    top: -320px;
+    left: 1620px;
+
+}
+
+.sns li:nth-child(9) {
+    background-image: url(/images/instgram/sns_img9.png);
+    top: 213px;
+    left: 1771px;
+}
+
+.sns li:last-child {
+    width: 300px;
+    height: 42px;
+
+    top: 307px;
+    left: 52px;
+}
+
+/* sns 로고&아이디 */
+
+.sns_text {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.sns_text img {
+    display: block;
+}
+
+.sns_logo {
+    width: 146px;
+    height: 42px;
+}
+
+.sns_id {
+    width: 143px;
+    height: 24px;
+}
+
+/* 호버 효과  */
+.sns li:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.sns li:last-child:hover {
+    opacity: 1;
+}
+
+
+
+/* 글로우심볼 */
+.sns_glow_symbol li {
+    /* transform: rotate(-14.79deg); */
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+
+    pointer-events: none; /* 💡 중요: 심볼이 사진 위를 가려도 사진 호버에 방해 안 되게 처리 */
+    
+    /* 애니메이션 설정: 2.5초 동안, 부드럽게(ease-in-out), 무한 반복(infinite) */
+    animation: twinkle 2.5s ease-in-out infinite;
+
+}
+
+.sns_glow_symbol li:first-child{
+    width: 41.6px;
+    height: 63.36px;
+    background-image: url(/images/instgram/glow_symbol1.png);
+    top: 154px;
+    left: 424px;
+
+    animation-delay: 0.5s;
+}
+
+.sns_glow_symbol li:nth-child(2){
+    width: 47.79px;
+    height: 73.05px;
+    background-image: url(/images/instgram/glow_symbol2.png);
+    top: 767px;
+    left: 564px;
+
+    animation-delay: 0.8s;
+}
+.sns_glow_symbol li:nth-child(3){
+    width: 47.79px;
+    height: 73.05px;
+    background-image: url(/images/instgram/glow_symbol2.png);
+    top: 363px;
+    left: 1091px;
+
+    animation-delay: 0.3s;
+}
+.sns_glow_symbol li:nth-child(4){
+    width: 37.28px;
+    height: 56.77px;
+    background-image: url(/images/instgram/glow_symbol3.png);
+    top: 33px;
+    left: 1563px;
+
+    animation-delay: 0.6s;
+}
+.sns_glow_symbol li:nth-child(5){
+    width: 49.49px;
+    height: 75.37px;
+    background-image: url(/images/instgram/glow_symbol4.png);
+    top: 571px;
+    left: 1753px;
+
+    animation-delay: 0.8s;
+}
+
+/* ✨ 반짝반짝 빛나는 애니메이션 정의 */
+@keyframes twinkle {
+    0% {
+        opacity: 0.4;
+        transform: rotate(-14.79deg) scale(0.9);
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(-14.79deg) scale(1.08); /* 살짝 커지면서 극적인 효과 */
+        /* 심볼 뒤에 은은한 광채 효과를 추가해 더 반짝이게 만듭니다 */
+        filter: drop-shadow(0 0 8px rgba(237, 233, 244, 0.9)); 
+    }
+    100% {
+        opacity: 0.4;
+        transform: rotate(-14.79deg) scale(0.9);
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    }
+}
+
+
+/* footer */
+
+#footer {
+    width: 100%;
+    max-width: 1920px;
+    height: 500px;
+    background-color: #B8B3C9;
+    color: rgba(245, 241, 235, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    width: 1320px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    letter-spacing: 3px;
+}
+
+/* 로고 섹션 수정 */
+.footer-logo {
+    text-align: center;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+}
+
+.logo-img {
+    width: 181px;
+    height: 43px;
+    object-fit: contain;
+    /* 이미지 비율 유지 */
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    font-size: 17px;
+    color: rgba(245, 241, 235, 0.8);
+    font-family: 'Lemon/Milk light', sans-serif;
+}
+
+/* 중단 3단 레이아웃 */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-weight: 100;
+
+}
+
+.content-box {
+    flex: 1;
+}
+
+.content-box h3 {
+    font-size: 13px;
+    color: rgba(245, 241, 235, 0.8);
+    margin-bottom: 20px;
+
+}
+
+.content-box p,
+.tel,
+.hours {
+    color: rgba(245, 241, 235, 0.6);
+    font-size: 13px;
+    line-height: 2;
+    /* 간격 확보 */
+}
+
+.tel {
+    margin-bottom: 20px;
+}
+
+.menu-list li {
+    margin-bottom: 20px;
+
+}
+
+/* 하단 섹션 */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 11px;
+    padding-top: 20px;
+    color: rgba(245, 241, 235, 0.6);
+    letter-spacing: 2px;
+}
+
+.company-info {
+    line-height: 1.8;
+}
+
+.bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.sns-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.sns-icons img {
+    width: 20px;
+    /* SNS 아이콘 크기 예시 */
+    height: auto;
+}

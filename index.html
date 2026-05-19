@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1360">
+    <!-- 브라우저 뷰포트 너비를 1360px로 고정하여 페이지를 그리도록 설정 -->
+    <title>OWND</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- webfont 연결-->
+    <!-- font-family: Pretendard; -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+
+    <!-- font-family: 'Lemon/Milk', sans-serif; 
+      / 'Lemon/Milk light', sans-serif;-->
+    <link href="https://fonts.cdnfonts.com/css/lemonmilk" rel="stylesheet">
+
+    <!-- font-family: 'Tropical Avenue Personal Use On', sans-serif; -->
+    <link href="https://fonts.cdnfonts.com/css/tropical-avenue-personal-use-on" rel="stylesheet">
+
+    <!-- swiper 연결 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+
+    <!-- 외부 css 연결-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="wrap">
+
+        <!------------------header S------------------>
+        <div id="header_wrap">
+            <!-- 배경색 #EDE9F4 , opcity0.6 /높이 80 -->
+            <div class="header">
+                <!-- 너비1320 / 높이 80 / 가운데정렬 -->
+                <ul class="gnb">
+                    <li>
+                        <a href="#about">
+                            ABOUT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#product">
+                            PRODUCT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tutorials">
+                            TUTORIALS
+                        </a>
+                    </li>
+                    <li class="header_logo">
+                        <a href="index.html">
+                            <img src="./images/header_logo.svg" alt="logo">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#event">
+                            EVENT
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#community">
+                            COMMUNITY
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sns_wrap">
+                            SNS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!------------------header E------------------>
+
+        <!-- 1단계: 메인 히어로 (2초 뒤 자동으로 사라짐) -->
+        <div class="main-hero" id="main_hero">
+
+            <div class="hero-logo-box">
+                <img src="/images/main_hero_logo.png" alt="첫페이지로고 ">
+            </div>
+
+            <p style="margin-top: 20px; font-weight: 500; letter-spacing: 2px;">OWN YOUR GLOW</p>
+        </div>
+
+        <div id="visual"> <!------------------visual S------------------>
+            <img src="./images/main_visual.png" alt="메인배너">
+        </div> <!------------------visual E------------------>
+
+
+        <div class="marquee-container"> <!--------------플로우 섹션 S ------------->
+            <div class="marquee-content" id="marquee">
+                <div class="marquee-item">SELF-LOVE</div>
+                <div class="marquee-item">EFFORTLESS BEAUTY</div>
+                <div class="marquee-item">NATURAL BUT COOL</div>
+                <div class="marquee-item">BOLD ATTITUDE</div>
+                <!-- 복사본 -->
+                <div class="marquee-item">SELF-LOVE</div>
+                <div class="marquee-item">EFFORTLESS BEAUTY</div>
+                <div class="marquee-item">NATURAL BUT COOL</div>
+                <div class="marquee-item">BOLD ATTITUDE</div>
+            </div>
+        </div> <!--------------플로우 섹션 E ------------->
+
+
+
+        <!------------------about S------------------>
+        <div id="about" class="reveal">
+            <!-- 배경색 / 이미지-->
+
+            <div class="about_wrap">
+                <!-- 너비 1320/가운데 정렬 -->
+
+
+                <div class="text_content"> <!-- 왼쪽 텍스트 영역 -->
+                    <span class="about_title">BRAND STORY</span>
+                    <h1 class="about_slogan">LESS COVER, <span class="slogan2">MORE YOU</span></h1>
+                    <p class="description">
+                        타인의 기준 대신, 나만의 정의<br>
+                        가리는 메이크업 대신, 드러나는 태도</p>
+                        <br>
+                    <p class="description2">충분한 당신을, 그대로</p>
+                
+                    <div class="brand-logo">OWND</div>
+
+                </div>
+
+                <div class="img_content"> <!-- 오른쪽 이미지 영역 -->
+                    <img src="./images/about_main.png" alt="브랜드소개이미지">
+
+                </div>
+            </div>
+        </div>
+        <!------------------about E------------------>
+
+
+        <!------------------product S------------------>
+        <div id="product" class="reveal">
+
+            <div class="objects_wrap">
+
+                <!-- <div class="objects-header">
+                    <h2>The Objects</h2>
+                    <span>EVERYDAY MULTI-USE COLLECTION</span>
+                </div> -->
+
+
+
+                <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+
+
+                        <div class="swiper-slide" id="flush_balm"> <!-- 슬라이드1 -->
+                            <div class="slide_wrap">
+                                <!-- 이미지&텍스트 감싸는 박스 -->
+                                <div class="slide_img_wrap"> <!-- 이미지박스 -->
+                                    <div class="hover-img-container">
+                                        <img src="/images/product/flush_balm.png" alt="플래시밤" class="img-front">
+                                        <img src="/images/product/flush_balm(hover).png" alt="플래시밤2" class="img-back">
+                                    </div>
+                                </div> <!-- 이미지박스 -->
+
+                                <div class="slide_text"> <!-- 텍스트 박스 -->
+                                    <h3 class="s_title">OWND FLUSH BALM</h3>
+                                    <span class="sub-tag">#DUST VEIL</span>
+                                    <p class="info">
+                                        피부 위에 얇게 내려앉는, 가장 조용한 혈색<br><br>
+                                        말없이 스며드는 컬러<br>
+                                        손끝으로 가볍게 완성되는 자연스러움
+                                    </p>
+                                </div> <!-- 텍스트 박스 -->
+                            </div>
+                        </div> <!-- 슬라이드1 -->
+
+
+                        <div class="swiper-slide"> <!-- 슬라이드2 -->
+                            <div class="slide_wrap">
+                                <!-- 이미지&텍스트 감싸는 박스 -->
+                                <div class="slide_img_wrap"> <!-- 이미지박스 -->
+                                    <div class="hover-img-container">
+                                        <img src="/images/product/sheer_glow_balm.png" alt="쉬어글로우밤" class="img-front">
+                                        <img src="/images/product/sheer_glow_balm(hover).png" alt="쉬어글로우밤2"
+                                            class="img-back">
+                                    </div>
+                                </div> <!-- 이미지박스 -->
+
+                                <div class="slide_text"> <!-- 텍스트 박스 -->
+                                    <h3 class="s_title">OWND SHEER GLOW BALM</h3>
+                                    <span class="sub-tag">#SOFT BEAM</span>
+                                    <p class="info">
+                                        빛을 얹는게 아니라, 피부 안에서 올라오는 광<br><br>
+                                        은은하게 번지는 빛<br>
+                                        과하지 않게 남는 윤기
+                                    </p>
+                                </div> <!-- 텍스트 박스 -->
+                            </div>
+                        </div> <!-- 슬라이드2 -->
+
+
+
+                        <div class="swiper-slide"> <!-- 슬라이드3 -->
+                            <div class="slide3_wrap">
+
+
+                                <ul class="list">
+
+                                    <li> <!-- 립앤치크 키링 -->
+                                        <div class="list_img">
+                                            <div class="hover-img-container">
+                                                <img src="/images/product/keyring.png" alt="립앤치크키링" class="img-front">
+                                                <img src="/images/product/keyring(hover).png" alt="립앤치크키링(호버)"
+                                                    class="img-back">
+                                            </div>
+                                        </div>
+
+                                        <div class="text_box">
+                                            <p class="list_text_title">
+                                                Flush Object
+                                            </p>
+                                            <p class="list_text">
+                                                어디서든 자연스럽게 스며드는 혈색.
+                                            </p>
+
+                                        </div>
+                                    </li> <!-- 립앤치크 키링 -->
+
+
+                                    <li> <!-- 하이라이터 키링 -->
+                                        <div class="list_img">
+                                            <div class="hover-img-container">
+                                                <img src="/images/product/keyring2.png" alt="쉬어글로우밤키링"
+                                                    class="img-front">
+                                                <img src="/images/product/keyring(hover)2.png" alt="쉬어글로우밤키링(호버)"
+                                                    class="img-back">
+                                            </div>
+                                        </div>
+
+                                        <div class="text_box">
+                                            <p class="list_text_title">
+                                                Glow Object
+                                            </p>
+                                            <p class="list_text">
+                                                언제나 함께하는 자연스러운 빛.
+                                            </p>
+
+                                        </div>
+                                    </li><!-- 하이라이터 키링 -->
+
+
+                                    <li> <!--파우치 -->
+                                        <div class="list_img">
+                                            <div class="hover-img-container">
+                                                <img src="/images/product/pouch.png" alt="파우치" class="img-front">
+                                                <img src="/images/product/pouch(hover).png" alt="파우치(호버)"
+                                                    class="img-back">
+                                            </div>
+                                        </div>
+                                        <div class="text_box">
+                                            <p class="list_text_title">
+                                                Essential Pouch
+                                            </p>
+                                            <p class="list_text">
+                                                가볍게 담아내는 나만의 에센셜.
+                                            </p>
+                                        </div>
+                                    </li> <!--파우치 -->
+
+
+                                    <li> <!--기프트백 -->
+                                        <div class="list_img">
+                                            <div class="hover-img-container">
+                                                <img src="/images/product/giftbag.png" alt="기프트백" class="img-front">
+                                                <img src="/images/product/giftbag(hover).png" alt="파우치(호버)"
+                                                    class="img-back">
+                                            </div>
+                                        </div>
+
+                                        <div class="text_box">
+                                            <p class="list_text_title">
+                                                ownd Gift Bag
+                                            </p>
+                                            <p class="list_text">
+                                                모든 순간을 완성하는 은은한 마무리.
+                                            </p>
+                                        </div>
+                                    </li> <!--기프트백 -->
+
+                                </ul>
+
+                            </div>
+                        </div> <!-- 슬라이드3 -->
+
+                    </div> <!--swiper wrapper -->
+
+                    <!-- 네비게이션버튼 -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <!-- swiper -->
+
+
+            </div>
+        </div>
+        <!------------------product E------------------>
+
+
+
+
+        <div id="tutorials" class="reveal"> <!------------------tutorials S------------------>
+            <div class="objects-header2">
+                <h2>The Own-Ritual</h2>
+                <span>swipe, dab, glow</span>
+            </div>
+
+
+            <div class="tutorials_wrap">  <!-- tutorials_wrap -->
+                <!-- 1320 * 660 -->
+                 <div class="tutorials_box">
+                    <!-- 301*650 / 영상+상품박스 감싸는 박스 -->
+                     <div class="video_wrap">
+                     <video class="hover_video" src="/video/립앤치크동영상.mp4" loop muted playsinline ></video></div>
+
+                     <div class="product_box_wrap">
+                        <!-- 298*129 /padding 10px -->
+                         <ul class="product_box">
+                            <!-- 사진+제품이름 -->
+
+                            <li>
+                                    <!-- 이미지크기 56*68 -->
+                                <img src="/images/tutorials/립앤치크.png" alt="립앤치크사진">
+                            </li>
+
+                            <li>
+                                <p class="video_title">ownd flush balm</p>
+                            <p class="video_p">dust veil</p> 
+                            </li>
+                         </ul>
+
+                         <a href="#flush_balm" class="tutorials_btn">add to cart</a>
+                        </div>
+                     </div>
+
+                 <div class="tutorials_box">
+                    <!-- 301*650 / 영상+상품박스 감싸는 박스 -->
+                     <div class="video_wrap">
+                     <video class="hover_video" src="/video/립앤치크동영상.mp4" loop muted playsinline ></video>
+                    </div>
+
+                     <div class="product_box_wrap">
+                        <!-- 298*129 /padding 10px -->
+                         <ul class="product_box">
+                            <!-- 사진+제품이름 -->
+
+                            <li>
+                                    <!-- 이미지크기 56*68 -->
+                                <img src="/images/tutorials/립앤치크.png" alt="립앤치크사진">
+                            </li>
+
+                            <li>
+                                <p class="video_title">ownd flush balm</p>
+                            <p class="video_p">dust veil</p> 
+                            </li>
+                         </ul>
+
+                         <a href="#" class="tutorials_btn">add to cart</a>
+                        </div>
+                     </div>
+
+                 <div class="tutorials_box">
+                    <!-- 301*650 / 영상+상품박스 감싸는 박스 -->
+                     <div class="video_wrap">
+                     <video class="hover_video" src="/video/립앤치크동영상.mp4" loop muted playsinline ></video>
+                    </div>
+
+                     <div class="product_box_wrap">
+                        <!-- 298*129 /padding 10px -->
+                         <ul class="product_box">
+                            <!-- 사진+제품이름 -->
+
+                            <li>
+                                    <!-- 이미지크기 56*68 -->
+                                <img src="/images/tutorials/립앤치크.png" alt="립앤치크사진">
+                            </li>
+
+                            <li>
+                                <p class="video_title">ownd flush balm</p>
+                            <p class="video_p">dust veil</p> 
+                            </li>
+                         </ul>
+
+                         <a href="#" class="tutorials_btn">add to cart</a>
+                        </div>
+                     </div>
+
+                 </div>
+
+
+
+            </div> <!-- tutorials_wrap -->
+
+
+
+        </div> <!------------------tutorials E------------------>
+
+
+
+
+        <div id="event"> <!------------------event S------------------>
+            <img src="/images/event.png" alt="이벤트배너">
+            <a href="#" class="event_btn">
+                <em>join now</em>
+            </a>
+        </div> <!------------------event E------------------>
+
+
+
+
+        <div id="community" class="reveal"> <!------------------community S------------------>
+            <!-- 배경색 -->
+
+            <div class="review">
+                <!-- 1320 / 900 / 가운데정렬 -->
+
+                <div class="review-left"> <!-- 왼쪽 텍스트 영역 -->
+
+                    <div class="review_header">
+                        <h2>Glow Archive</h2>
+                        <span class="review_sub">'OWND'와 함께한 순간들</span>
+                    </div>
+
+                    <p class="desc">
+                        우리의 제품이 당신의 일상에서<br>
+                        어떤 모습으로 빛나고 있는지 기록합니다.<br><br>
+                        솔직한 순간들을 공유하고,<br>
+                        가장 당신다운 조각들을 찾아보세요.
+                    </p>
+
+                    <p class="desc2">
+                        real glow, real stories.
+                    </p>
+
+                    <div class="review-action-area">
+                        <a href="#" class="share-btn">SHARE YOURS
+                            <img src="/images/community/글로우심볼(화이트).png" alt="Glow Symbol" class="glow-symbol"
+                                onerror="this.style.display='none'">
+                        </a>
+
+                    </div>
+                </div> <!-- 왼쪽 텍스트 영역 -->
+
+
+
+                <div class="review-right"> <!-- 오른쪽 사진 영역 -->
+
+                    <div class="review-column"> <!-- Column 1 (Scroll Up) -->
+                        <div class="review-track track-up">
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review1.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review2.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review3.png" alt="review"></div>
+                            </div>
+
+                            <!-- 복제본 -->
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review1.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review2.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review3.png" alt="review"></div>
+                            </div>
+
+                        </div>
+                    </div> <!-- Column 1 (Scroll Up) -->
+
+
+                    <div class="review-column"> <!-- Column 2 (Scroll Down) -->
+                        <div class="review-track track-down">
+
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review4.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review5.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review6.png" alt="review"></div>
+                            </div>
+
+
+                            <!-- 복제본 -->
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review4.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review5.png" alt="review"></div>
+                            </div>
+                            <div class="review-item">
+                                <div class="img-box"><img src="/images/community/review6.png" alt="review"></div>
+                            </div>
+
+                        </div>
+
+                    </div> <!-- Column 2 (Scroll Down) -->
+                </div> <!-- 오른쪽 사진 영역 -->
+
+            </div> <!-- 리뷰 -->
+        </div> <!------------------community E------------------>
+
+
+
+
+        <div id="vegan_wrap"> <!------------------vegan S------------------>
+            <!-- 배경색 #F5F1EB / 그라디언트 linear (6)f5f1b 72% , (25)f7f5f0 60% (54)fffff 57% -->
+            <div class="vegan reveal">
+                <img src="/images/vegan.png" alt="비건안내">
+            </div>
+        </div> <!------------------vegan E------------------>
+
+
+
+
+        <div id="sns_wrap" class="reveal"> <!------------------sns S------------------>
+            <!-- 1920 / 900 / 그라디언트  -->
+            <ul class="sns">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li>
+                    <div class="sns_text">
+                        <img src="/images/instgram/instagram.png" alt="인스타그램로고" class="sns_logo">
+                        <a href="#">
+                            <img src="/images/instgram/아이디.png" alt="인스타그램아이디" class="sns_id"></a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="sns_glow_symbol">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+
+
+        </div> <!------------------sns E----------------->
+
+
+        <div class="marquee-container2"> <!--------------플로우 섹션2 S ------------->
+            <div class="marquee-content">
+                <div class="marquee-item2">SELF-LOVE</div>
+                <div class="marquee-item2">EFFORTLESS BEAUTY</div>
+                <div class="marquee-item2">NATURAL BUT COOL</div>
+                <div class="marquee-item2">BOLD ATTITUDE</div>
+                <!-- 복사본 -->
+                <div class="marquee-item2">SELF-LOVE</div>
+                <div class="marquee-item2">EFFORTLESS BEAUTY</div>
+                <div class="marquee-item2">NATURAL BUT COOL</div>
+                <div class="marquee-item2">BOLD ATTITUDE</div>
+            </div>
+        </div> <!--------------플로우 섹션2 E ------------->
+
+
+        <div id="footer"> <!------------------- footer ------------------>
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <a href="/index.html"><img src="/images/footer_logo.png" alt="OWND" class="logo-img"></a>
+                    <p>NATURAL — BUT — COOL</p>
+                </div>
+
+                <div class="footer-content"> <!-- footer-content -->
+                    <div class="content-box">
+                        <h3>PARTNERSHIP</h3>
+                        <p>attractivey1322@gmail.com</p>
+                    </div>
+
+                    <div class="content-box">
+                        <h3>CUSTOMER CENTER</h3>
+                        <p class="tel">1500-0000</p>
+                        <ul class="hours">
+                            <li>MON-FRI 9AM-6PM</li>
+                            <li>LUNCH 12PM-1PM</li>
+                            <li>SAT, SUN, HOLIDAY OFF</li>
+                        </ul>
+                    </div>
+
+                    <div class="content-box menu-list">
+                        <ul>
+                            <li><a href="#about">ABOUT</a></li>
+                            <li><a href="#product">PRODUCT</a></li>
+                            <li><a href="#tutorials">TUTORIALS</a></li>
+                            <li><a href="#event">EVENT</a></li>
+                            <li><a href="#community">REVIEW</a></li>
+                        </ul>
+                    </div>
+                </div> <!-- footer-content -->
+
+
+                <div class="footer-bottom"> <!-- footer_bottom -->
+                    <div class="company-info">
+                        상호: OWND | 대표: 윤요안나 <br>
+                        사업자등록번호: 000-00-00000 | 통신판매업신고: 제 2026-서울-0000호 [Sample]
+                    </div>
+
+                    <div class="bottom-right">
+                        <span class="copyright">© 2026 OWND. ALL RIGHTS RESERVED.</span>
+                        <div class="sns-icons">
+                            <a href="#"><img src="/images/insta.png" alt="instagram"></a>
+                            <a href="#"><img src="/images/tictok.png" alt="tiktok"></a>
+                        </div>
+                    </div>
+                </div> <!-- footer_bottom -->
+            </div>
+        </div> <!------------------- footer ------------------>
+
+    </div> <!-- 전체 감싸는 wrap -->
+
+
+
+    <!-- 외부 스와이퍼 JS 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>
