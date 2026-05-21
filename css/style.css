@@ -128,13 +128,39 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(237, 233, 244, 0.8);
-    /* 연보라 배경 */
-    color: #353535;
+    background-color: #b8b3c9e8;
+    color: #F5F1EB;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     position: relative;
 }
+
+/* ✨ 2. 가상 요소를 사용해 배경 위에 자잘한 노이즈(Grain) 막 씌우기 */
+.main-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* 배경 바로 위에 깔리도록 설정 */
+    
+    /* 💡 코드로 만드는 초경량 고화질 노이즈 필터 (SVG 데이터) */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    
+    /* 🔍 노이즈의 강도와 느낌을 조절하는 핵심 속성 */
+    opacity: 0.18; /* 👈 이 숫자를 높이면 자갈처럼 거칠어지고, 낮추면 부드러워집니다 (0.12 ~ 0.18 추천) */
+    mix-blend-mode: overlay; /* 바탕색과 자연스럽게 믹스되어 고급스럽게 녹아들게 함 */
+    
+    pointer-events: none; /* 노이즈 레이어가 마우스 클릭을 방해하지 않도록 설정 */
+}
+
+/* ⚠️ 중요: 글자와 로고 박스가 노이즈 밑으로 파묻히지 않게 z-index로 띄워주기 */
+.hero-logo-box,
+.main-hero p {
+    z-index: 1;
+}
+
 
 /* 3초 뒤 높이가 사라짐 */
 .main-hero.shrink {
@@ -144,14 +170,18 @@ body {
 
 /* 메인 히어로 로고 이미지 및 반짝이는 효과 */
 .hero-logo-box {
-    position: relative;
+  
     width: 1278px;
     height: 303px;
     max-width: 90%;
     /* 모바일 대응용 */
     height: auto;
-    overflow: hidden;
-    /* 반짝이는 광원이 박스 밖으로 나가지 않게 함 */
+
+    position: absolute;
+    top: 431px;
+    left: 501px;
+
+    opacity: 0.6;
 }
 
 .hero-logo-box img {
@@ -160,40 +190,64 @@ body {
     display: block;
 }
 
-/* 반짝이는 효과 (Shimmer Effect) */
-.hero-logo-box::after {
+
+.main-hero p {
+    font-family: 'Lemon/Milk', sans-serif;
+    font-size: 90px;
+    letter-spacing: 30px;
+    position: absolute;
+    top: 344px;
+    left: 143px;
+    margin: 0; /* 혹시 모를 기본 마진 리셋 */
+
+    /* 100% 꽉 찬 아이보리 텍스트 컬러 유지 */
+    color: #F5F1EB; 
+    
+    /* 💡 아래에 만들 빛줄기가 글자 크기 밖으로 튀어나가지 않게 가둠 */
+    overflow: hidden; 
+    display: inline-block;
+padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살짝 주기 */
+}
+
+/* 2. ⚡ 글씨 박스 위를 대각선으로 통째로 훑고 지나가는 초강력 빛줄기 */
+.main-hero p::after {
     content: '';
     position: absolute;
     top: 0;
-    left: -150%;
-    width: 50%;
+    width: 60%; /* 💡 빛줄기의 굵기 (원하시면 50%, 60%로 키우셔도 됩니다) */
     height: 100%;
-    background: linear-gradient(to right,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.3) 50%,
-            rgba(255, 255, 255, 0) 100%);
-    transform: skewX(-25deg);
-    animation: shine 1s infinite;
+    
+    /* 대각선으로 떨어지는 쨍하고 선명한 순백의 그라디언트 광선 */
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.4) 50%, /* 가운데는 엄청 쨍한 흰색 */
+        rgba(255, 255, 255, 0) 100%
+    );
+    
+    /* 💡 핵심: 빛줄기를 대각선(-30도)으로 과감하게 꺾어줍니다 */
+    transform: skewX(-30deg); 
+    
+    /* 처음에는 글씨 박스 왼쪽 바깥에 숨겨둠 */
+    left: -150%; 
+    
+    /* 1.8초마다 한 번씩 시원하게 지나가도록 세팅 */
+    animation: box_flash 1.8s ease-in-out infinite;
 }
 
-@keyframes shine {
+/* ✨ 왼쪽 밖에서 오른쪽 밖으로 대각선 빛이 휙 지나가는 애니메이션 */
+@keyframes box_flash {
     0% {
         left: -150%;
     }
-
-    100% {
+    35% {
+        /* 0%에서 35%까지 아주 빠른 속도로 오른쪽을 향해 가로지름 */
         left: 150%;
     }
-}
-
-.main-hero p {
-    font-family: 'Tropical Avenue Personal Use On', sans-serif;
-    font-weight: 700;
-    font-size: 50px;
-    padding-top: 50px;
-    letter-spacing: 30px;
-    opacity: 0.8;
-
+    100% {
+        /* 나머지 시간 동안은 오른쪽 밖에 머무르며 부드러운 텀(대기시간)을 줌 */
+        left: 150%;
+    }
 }
 
 /* -----------------visual----------------- */
@@ -1251,85 +1305,117 @@ body {
 
 
 /* 글로우심볼 */
+/* 글로우 심볼 공통 스타일에 애니메이션 적용 */
 .sns_glow_symbol li {
-    /* transform: rotate(-14.79deg); */
+    position: absolute;
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    position: absolute;
+    pointer-events: none;
+    /* 사진 호버 방해 방지 */
+    overflow: hidden;
+    /* 💡 중요: 심볼 크기 밖으로 나가는 빛줄기는 잘라내기 */
 
-    pointer-events: none; /* 💡 중요: 심볼이 사진 위를 가려도 사진 호버에 방해 안 되게 처리 */
-    
-    /* 애니메이션 설정: 2.5초 동안, 부드럽게(ease-in-out), 무한 반복(infinite) */
-    animation: twinkle 2.5s ease-in-out infinite;
-
+    /* 14.79도 각도는 그대로 고정! 크기 변화 절대 없음 */
+    transform: rotate(-14.79deg);
 }
 
-.sns_glow_symbol li:first-child{
+/* 심볼들 위에 가상으로 얹을 선명한 '빛줄기' 만들기 (플래시 효과의 핵심) */
+.sns_glow_symbol li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 40%;
+    /* 빛줄기 두께 */
+    height: 100%;
+
+    /* 비스듬하게 떨어지는 선명한 유리 반사광 그라디언트 */
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.9) 50%,
+            /* 가운데는 아주 선명하고 쨍한 흰색 */
+            rgba(255, 255, 255, 0) 100%);
+
+    /* 빛줄기를 대각선으로 살짝 꺾어줌 */
+    transform: skewX(-25deg);
+
+    /* 4초마다 무한 반복되지만, 실제 빛이 지나가는 시간은 아주 짧음 */
+    animation: glass_flash 3s ease-in-out infinite;
+}
+
+.sns_glow_symbol li:first-child {
     width: 41.6px;
     height: 63.36px;
     background-image: url(../images/instgram/glow_symbol1.png);
     top: 154px;
     left: 424px;
-
-    animation-delay: 0.5s;
 }
 
-.sns_glow_symbol li:nth-child(2){
+.sns_glow_symbol li:nth-child(2) {
     width: 47.79px;
     height: 73.05px;
     background-image: url(../images/instgram/glow_symbol2.png);
     top: 767px;
     left: 564px;
-
-    animation-delay: 0.8s;
 }
-.sns_glow_symbol li:nth-child(3){
+
+.sns_glow_symbol li:nth-child(3) {
     width: 47.79px;
     height: 73.05px;
     background-image: url(../images/instgram/glow_symbol2.png);
     top: 363px;
     left: 1091px;
-
-    animation-delay: 0.3s;
 }
-.sns_glow_symbol li:nth-child(4){
+
+.sns_glow_symbol li:nth-child(4) {
     width: 37.28px;
     height: 56.77px;
     background-image: url(../images/instgram/glow_symbol3.png);
     top: 33px;
     left: 1563px;
-
-    animation-delay: 0.6s;
 }
-.sns_glow_symbol li:nth-child(5){
+
+.sns_glow_symbol li:nth-child(5) {
     width: 49.49px;
     height: 75.37px;
     background-image: url(../images/instgram/glow_symbol4.png);
     top: 571px;
     left: 1753px;
-
-    animation-delay: 0.8s;
 }
 
-/* ✨ 반짝반짝 빛나는 애니메이션 정의 */
-@keyframes twinkle {
+/* 유리 표면에 빛이 스치고 지나가는 플래시 애니메이션 */
+@keyframes glass_flash {
     0% {
-        opacity: 0.4;
-        transform: rotate(-14.79deg) scale(0.9);
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+        /* 빛줄기가 왼쪽 밖에 숨어있음 */
+        left: -150%;
     }
-    50% {
-        opacity: 1;
-        transform: rotate(-14.79deg) scale(1.08); /* 살짝 커지면서 극적인 효과 */
-        /* 심볼 뒤에 은은한 광채 효과를 추가해 더 반짝이게 만듭니다 */
-        filter: drop-shadow(0 0 8px rgba(237, 233, 244, 0.9)); 
-    }
+
+    10%,
     100% {
-        opacity: 0.4;
-        transform: rotate(-14.79deg) scale(0.9);
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+        /* 순간적으로 오른쪽 밖으로 샥- 지나감 (10%라는 짧은 시간 동안 빠르게 이동) */
+        left: 150%;
     }
+}
+
+/* 💡 심볼들이 번갈아가며 스치듯 반짝이도록 타이밍 딜레이 설정 */
+.sns_glow_symbol li:nth-child(1)::after {
+    animation-delay: 0s;
+}
+
+.sns_glow_symbol li:nth-child(2)::after {
+    animation-delay: 1.2s;
+}
+
+.sns_glow_symbol li:nth-child(3)::after {
+    animation-delay: 0.5s;
+}
+
+.sns_glow_symbol li:nth-child(4)::after {
+    animation-delay: 2.3s;
+}
+
+.sns_glow_symbol li:nth-child(5)::after {
+    animation-delay: 1.6s;
 }
 
 
@@ -1449,4 +1535,70 @@ body {
     width: 20px;
     /* SNS 아이콘 크기 예시 */
     height: auto;
+}
+
+
+/* top버튼 */
+.scroll-to-top-btn {
+    /* 레이아웃 고정 */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+
+    /* 디자인 크기 및 형태 */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* 완벽한 원형 */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    /* 🔮 배경: 은은한 퍼플빛 투명 유리알 효과 (Glassmorphism) */
+    background: rgba(237, 233, 244, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    /* 텍스트 스타일 */
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+
+    /* 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+
+    /* 처음에는 숨겨두기 */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+/* 화살표 모양 미세 조정 */
+.scroll-to-top-btn .arrow {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+/* ✨ 호버했을 때 선명해지면서 슥 올라오는 효과 */
+.scroll-to-top-btn:hover {
+    background: #B8B3C9;
+    /* 우리가 썼던 푸터 메인 컬러 */
+    border-color: #EDE9F4;
+    box-shadow: 0 0 15px rgba(184, 179, 201, 0.5);
+}
+
+.scroll-to-top-btn:hover .arrow {
+    transform: translateY(-3px);
+    /* 화살표가 위로 쏙 움직임 */
+}
+
+/* 켜지는 클래스 */
+.scroll-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
 }
