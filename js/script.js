@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerWrap = document.getElementById('header_wrap');
     const mainHero = document.getElementById('main_hero');
 
-    // 1. 페이지 접속 후 4초(3000ms) 뒤에 메인 히어로만 자동으로 사라짐
+    // // 1. 페이지 접속 후 4초(3000ms) 뒤에 메인 히어로만 자동으로 사라짐
     setTimeout(() => {
         mainHero.classList.add('shrink');
     }, 3000);
+
+
 
     // 2. 스크롤을 내릴 때만 헤더가 나타나도록 설정
     window.addEventListener('scroll', () => {
@@ -19,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Product Swiper 초기화 
 
-    
+
+    // 3. Swiper 설정
     const swiper = new Swiper('.mySwiper', {
         loop: true, // 루프 활성화 (권장)
         navigation: {
@@ -29,6 +31,30 @@ document.addEventListener('DOMContentLoaded', () => {
             prevEl: '.swiper-button-prev',
         },
     });
+
+    // 3-2. #product 섹션 스크롤 감지기
+    const productSection = document.querySelector('#product');
+
+    if (productSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    swiper.params.autoplay = {
+                        delay: 4000, 
+                        disableOnInteraction: false,
+                        waitForTransition: true
+                    };
+                    swiper.autoplay.start();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2 
+        });
+
+        observer.observe(productSection);
+    } 
+
 
     // 4. 스크롤 페이드인 효과 (Intersection Observer - 무한 반복 버전)
     const revealCallback = (entries) => {
@@ -54,6 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => {
         revealObserver.observe(el);
     });
+
+
 
 
     // 5.튜토리얼 영상
@@ -88,7 +116,38 @@ tutorialBoxes.forEach(box => {
     });
 });
 
+
+// 6. 풋터 top 버튼
+// TOP 버튼과 푸터 요소를 가져옵니다.
+const topBtn = document.querySelector('#scrollToTopBtn');
+const footer = document.querySelector('#footer'); // 태그명 'footer'로 안전하게 매칭
+
+if (topBtn) {
+    
+    // 1. 📜 스크롤 이벤트: 스크롤이 800px 이상 내려왔을 때만 TOP 버튼 나타나기
+window.addEventListener('scroll', () => {
+    // 800px은 첫 화면(메인 배너)이 끝나는 대략적인 시점입니다. 
+    // 본인 사이트에 맞춰 600이나 1000 등으로 자유롭게 조절하세요!
+    if (window.scrollY > 800) {
+        topBtn.classList.add('show');
+    } else {
+        topBtn.classList.remove('show');
+    }
 });
+
+
+    // 2. 👆 클릭 이벤트: 버튼을 누르면 화면 맨 위로 부드럽게 스크롤
+    topBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 부드럽게 스르륵 올라가는 핵심 옵션
+        });
+    });
+}
+
+ 
+
+}); //전체 감싸고있는 친구  (이 안으로 작성해야함)
 
 
 
