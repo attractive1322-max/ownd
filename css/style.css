@@ -143,16 +143,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* 배경 바로 위에 깔리도록 설정 */
-    
+    z-index: 0;
+    /* 배경 바로 위에 깔리도록 설정 */
+
     /* 💡 코드로 만드는 초경량 고화질 노이즈 필터 (SVG 데이터) */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    
+
     /* 🔍 노이즈의 강도와 느낌을 조절하는 핵심 속성 */
-    opacity: 0.18; /* 👈 이 숫자를 높이면 자갈처럼 거칠어지고, 낮추면 부드러워집니다 (0.12 ~ 0.18 추천) */
-    mix-blend-mode: overlay; /* 바탕색과 자연스럽게 믹스되어 고급스럽게 녹아들게 함 */
-    
-    pointer-events: none; /* 노이즈 레이어가 마우스 클릭을 방해하지 않도록 설정 */
+    opacity: 0.18;
+    /* 👈 이 숫자를 높이면 자갈처럼 거칠어지고, 낮추면 부드러워집니다 (0.12 ~ 0.18 추천) */
+    mix-blend-mode: overlay;
+    /* 바탕색과 자연스럽게 믹스되어 고급스럽게 녹아들게 함 */
+
+    pointer-events: none;
+    /* 노이즈 레이어가 마우스 클릭을 방해하지 않도록 설정 */
 }
 
 /* ⚠️ 중요: 글자와 로고 박스가 노이즈 밑으로 파묻히지 않게 z-index로 띄워주기 */
@@ -170,7 +174,7 @@ body {
 
 /* 메인 히어로 로고 이미지 및 반짝이는 효과 */
 .hero-logo-box {
-  
+
     width: 1278px;
     height: 303px;
     max-width: 90%;
@@ -192,21 +196,23 @@ body {
 
 
 .main-hero p {
-    font-family: 'Lemon/Milk', sans-serif;
-    font-size: 90px;
-    letter-spacing: 30px;
+    font-family: 'Lemon/Milk light', sans-serif;
+    font-size: 50px;
+    letter-spacing: 5px;
     position: absolute;
-    top: 344px;
-    left: 143px;
-    margin: 0; /* 혹시 모를 기본 마진 리셋 */
+    top: 328px;
+    left: 535px;
+    margin: 0;
+    /* 혹시 모를 기본 마진 리셋 */
 
     /* 100% 꽉 찬 아이보리 텍스트 컬러 유지 */
-    color: #F5F1EB; 
-    
+    color: #F5F1EB;
+
     /* 💡 아래에 만들 빛줄기가 글자 크기 밖으로 튀어나가지 않게 가둠 */
-    overflow: hidden; 
+    overflow: hidden;
     display: inline-block;
-padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살짝 주기 */
+    padding: 10px 0;
+    /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살짝 주기 */
 }
 
 /* 2. ⚡ 글씨 박스 위를 대각선으로 통째로 훑고 지나가는 초강력 빛줄기 */
@@ -214,23 +220,23 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
     content: '';
     position: absolute;
     top: 0;
-    width: 60%; /* 💡 빛줄기의 굵기 (원하시면 50%, 60%로 키우셔도 됩니다) */
+    width: 60%;
+    /* 💡 빛줄기의 굵기 (원하시면 50%, 60%로 키우셔도 됩니다) */
     height: 100%;
-    
+
     /* 대각선으로 떨어지는 쨍하고 선명한 순백의 그라디언트 광선 */
-    background: linear-gradient(
-        to right, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.4) 50%, /* 가운데는 엄청 쨍한 흰색 */
-        rgba(255, 255, 255, 0) 100%
-    );
-    
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            /* 가운데는 엄청 쨍한 흰색 */
+            rgba(255, 255, 255, 0) 100%);
+
     /* 💡 핵심: 빛줄기를 대각선(-30도)으로 과감하게 꺾어줍니다 */
-    transform: skewX(-30deg); 
-    
+    transform: skewX(-30deg);
+
     /* 처음에는 글씨 박스 왼쪽 바깥에 숨겨둠 */
-    left: -150%; 
-    
+    left: -150%;
+
     /* 1.8초마다 한 번씩 시원하게 지나가도록 세팅 */
     animation: box_flash 1.8s ease-in-out infinite;
 }
@@ -240,10 +246,12 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
     0% {
         left: -150%;
     }
+
     35% {
         /* 0%에서 35%까지 아주 빠른 속도로 오른쪽을 향해 가로지름 */
         left: 150%;
     }
+
     100% {
         /* 나머지 시간 동안은 오른쪽 밖에 머무르며 부드러운 텀(대기시간)을 줌 */
         left: 150%;
@@ -383,7 +391,7 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
     font-weight: 100;
     margin-bottom: 14px;
     display: block;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
 }
 
 .about_slogan {
@@ -391,7 +399,7 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
     font-size: 38px;
     font-weight: 100;
     margin-bottom: 44px;
-    letter-spacing: 7px;
+    letter-spacing: 5px;
     line-height: 1.2;
 }
 
@@ -401,8 +409,7 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 
 .description {
     font-size: 22px;
-    line-height: 1.8;
-    letter-spacing: 2px;
+    line-height: 1.5;
     margin-bottom: 50px;
     font-weight: 300;
 }
@@ -510,9 +517,8 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 }
 
 .sub-tag {
-    font-family: 'Lemon/Milk light', sans-serif;
-    font-weight: 100;
-    letter-spacing: 1px;
+    font-family: 'Pretendard';
+    font-weight: 380;
     font-size: 15px;
     margin-bottom: 60px;
     display: block;
@@ -706,7 +712,7 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 
 .tutorials_wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 
@@ -817,8 +823,8 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 
 /* event */
 #event {
-    /* .evnet_btn의 기준 */
-    position: relative;
+    background: url(../images/event.png) no-repeat center/cover;
+    height: 250px;
 }
 
 #event img {
@@ -826,6 +832,14 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
     width: 100%;
     height: 250px;
 
+}
+
+.inner_event {
+    /* .evnet_btn의 기준 */
+    width: 1320px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .event_btn {
@@ -841,8 +855,8 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 
     /* position 자식요소 */
     position: absolute;
-    top: 155px;
-    left: 1040px;
+    top: 156px;
+    right: 449px;
 
     box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.02);
 }
@@ -901,20 +915,17 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 .review-left .desc {
     font-size: 15px;
     line-height: 2;
-    margin-top: 80px;
+    margin-top: 35px;
     margin-bottom: 90px;
     font-weight: 300;
 }
 
 .review-left .desc2 {
-    font-size: 20px;
+    font-size: 24px;
     font-family: 'Lemon/Milk light', sans-serif;
     font-weight: 100;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: #8a8a8a;
-    margin-bottom: 15px;
-
-
 }
 
 
@@ -924,7 +935,7 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 250px;
+    width: 240px;
     height: 80px;
     box-sizing: border-box;
     cursor: pointer;
@@ -932,13 +943,11 @@ padding: 10px 0; /* 빛줄기가 위아래로 잘리지 않게 여유 공간 살
 }
 
 .share-btn {
-    font-family: 'Lemon/Milk light', sans-serif;
+    font-family: 'Pretendard';
     position: relative;
     color: #F5F1EB;
-    /* 호버 전 글씨 #EDE9F4 */
     font-size: 20px;
-    font-weight: 100;
-    letter-spacing: 2px;
+    font-weight: 300;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
