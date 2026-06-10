@@ -150,7 +150,7 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 
     /* 🔍 노이즈의 강도와 느낌을 조절하는 핵심 속성 */
-    opacity: 0.18;
+    opacity: 0.15;
     /* 👈 이 숫자를 높이면 자갈처럼 거칠어지고, 낮추면 부드러워집니다 (0.12 ~ 0.18 추천) */
     mix-blend-mode: overlay;
     /* 바탕색과 자연스럽게 믹스되어 고급스럽게 녹아들게 함 */
@@ -197,11 +197,11 @@ body {
 
 .main-hero p {
     font-family: 'Lemon/Milk light', sans-serif;
-    font-size: 50px;
-    letter-spacing: 5px;
+    font-size: 60px;
+    letter-spacing: 10px;
     position: absolute;
-    top: 328px;
-    left: 535px;
+    top: 368px;
+    left: 435px;
     margin: 0;
     /* 혹시 모를 기본 마진 리셋 */
 
@@ -1431,8 +1431,7 @@ body {
 /* footer */
 
 #footer {
-    width: 100%;
-    max-width: 1920px;
+   
     height: 500px;
     background-color: #B8B3C9;
     color: rgba(245, 241, 235, 0.8);
@@ -1522,7 +1521,7 @@ body {
     font-size: 11px;
     padding-top: 20px;
     color: rgba(245, 241, 235, 0.6);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .company-info {
